@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RM4TECH - Manutenção de Computadores</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Adicionado AOS para animações de rolagem -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Outfit', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        /* Fundo da primeira dobra */
+        .hero-bg {
+            background-image: linear-gradient(rgba(15, 23, 42, 0.85), rgba(30, 58, 138, 0.85)), url('https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        /* Efeito de Vidro */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .service-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        /* Zoom da imagem no hover */
+        .image-zoom img {
+            transition: transform 0.7s ease;
+        }
+        .image-zoom:hover img {
+            transform: scale(1.1);
+        }
+        
+        /* Efeito de background animado sutil */
+        @keyframes blob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+        .animate-blob {
+            animation: blob 7s infinite;
+        }
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 overflow-x-hidden">
+
+    <!-- Navbar (Vidro/Glassmorphism) -->
+    <nav class="glass-nav shadow-sm sticky top-0 z-50 transition-all duration-300 border-b border-gray-200/50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center space-x-3 group cursor-pointer">
+                    <div class="w-10 h-10 bg-blue-600 text-white rounded-xl flex items-center justify-center transform group-hover:rotate-12 transition-transform shadow-md">
+                        <i class="fas fa-microchip text-xl"></i>
+                    </div>
+                    <span class="text-2xl font-bold text-gray-900 tracking-tight">RM4<span class="text-blue-600">TECH</span></span>
+                </div>
+                <div class="hidden md:flex space-x-8 font-medium">
+                    <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-blue-600 after:transition-all">Home</a>
+                    <a href="#servicos" class="text-gray-600 hover:text-blue-600 transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-blue-600 after:transition-all">Serviços</a>
+                    <a href="#precos" class="text-gray-600 hover:text-blue-600 transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-blue-600 after:transition-all">Preços</a>
+                    <a href="#contato" class="text-gray-600 hover:text-blue-600 transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-blue-600 after:transition-all">Contato</a>
+                </div>
+                <div class="md:hidden">
+                    <button class="text-gray-600 hover:text-blue-600 transition"><i class="fas fa-bars text-2xl"></i></button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-bg text-white py-32 px-4 text-center relative overflow-hidden">
+        <div class="max-w-5xl mx-auto relative z-10" data-aos="fade-up" data-aos-duration="1000">
+            <div class="inline-block px-4 py-2 bg-blue-600/30 rounded-full mb-6 border border-blue-400/30 backdrop-blur-md">
+                <span class="text-blue-200 font-semibold text-sm tracking-wider uppercase flex items-center"><i class="fas fa-tools mr-2"></i> Assistência Especializada</span>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-6 leading-tight drop-shadow-lg">
+                Manutenção de <span class="text-blue-400">Computadores</span> e Notebooks
+            </h1>
+            <p class="text-xl md:text-2xl mb-10 opacity-90 font-light text-gray-200 max-w-3xl mx-auto">
+                Alta tecnologia e desempenho em um só lugar. Retiramos e entregamos no local para sua total comodidade!
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-5">
+                <!-- Botão WhatsApp com mensagem personalizada -->
+                <a href="https://wa.me/5511970670889?text=Olá,%20desejo%20um%20orçamento." target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-full font-bold flex items-center justify-center transition transform hover:-translate-y-1 hover:shadow-lg hover:shadow-green-500/40">
+                    <i class="fab fa-whatsapp mr-2 text-2xl animate-pulse"></i> Solicitar Orçamento
+                </a>
+                <a href="#precos" class="bg-white/10 backdrop-blur-md border border-white/20 text-white px-8 py-4 rounded-full font-bold hover:bg-white hover:text-blue-900 transition transform hover:-translate-y-1">
+                    Ver Tabela de Preços
+                </a>
+            </div>
+        </div>
+        
+        <!-- Elementos Decorativos de Fundo -->
+        <div class="absolute top-1/4 left-10 md:left-32 w-48 h-48 bg-blue-500 rounded-full mix-blend-screen filter blur-3xl opacity-30 animate-blob"></div>
+        <div class="absolute top-1/3 right-10 md:right-32 w-48 h-48 bg-purple-500 rounded-full mix-blend-screen filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+    </header>
+
+    <!-- Features (Serviços) -->
+    <section id="servicos" class="py-24 max-w-6xl mx-auto px-4 relative">
+        <div class="text-center mb-16" data-aos="fade-up">
+            <h2 class="text-4xl font-bold text-gray-900 mb-4">Nossos Serviços</h2>
+            <div class="w-24 h-1.5 bg-blue-600 mx-auto rounded-full"></div>
+            <p class="text-gray-500 mt-6 text-lg max-w-2xl mx-auto">Soluções completas para otimizar, reparar e manter seu equipamento funcionando com máxima eficiência.</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Card 1 -->
+            <div class="bg-white rounded-[2rem] shadow-lg shadow-gray-200/50 border border-gray-100 service-card text-center overflow-hidden image-zoom group relative" data-aos="fade-up" data-aos-delay="100">
+                <div class="h-56 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1562976540-1502f0144246?auto=format&fit=crop&w=600&q=80" alt="Upgrades de PC" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent"></div>
+                    <div class="absolute bottom-6 left-0 right-0 flex justify-center">
+                        <div class="w-16 h-16 bg-blue-600 text-white rounded-2xl flex items-center justify-center transform rotate-3 group-hover:-rotate-6 transition-transform shadow-lg shadow-blue-600/30">
+                            <i class="fas fa-rocket text-2xl"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-8 pt-6">
+                    <h3 class="text-2xl font-bold mb-3 text-gray-800">Upgrades</h3>
+                    <p class="text-gray-600 leading-relaxed">Aumente a velocidade do seu PC com SSDs ultrarrápidos e memórias RAM de última geração.</p>
+                </div>
+            </div>
+            
+            <!-- Card 2 -->
+            <div class="bg-white rounded-[2rem] shadow-lg shadow-gray-200/50 border border-gray-100 service-card text-center overflow-hidden image-zoom group relative" data-aos="fade-up" data-aos-delay="200">
+                <div class="h-56 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1585247226801-bc613c441316?auto=format&fit=crop&w=600&q=80" alt="Limpeza Técnica" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent"></div>
+                    <div class="absolute bottom-6 left-0 right-0 flex justify-center">
+                        <div class="w-16 h-16 bg-blue-600 text-white rounded-2xl flex items-center justify-center transform -rotate-3 group-hover:rotate-6 transition-transform shadow-lg shadow-blue-600/30">
+                            <i class="fas fa-broom text-2xl"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-8 pt-6">
+                    <h3 class="text-2xl font-bold mb-3 text-gray-800">Limpeza Técnica</h3>
+                    <p class="text-gray-600 leading-relaxed">Prevenção ativa contra superaquecimento com remoção completa de poeira e troca de pasta térmica.</p>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="bg-white rounded-[2rem] shadow-lg shadow-gray-200/50 border border-gray-100 service-card text-center overflow-hidden image-zoom group relative" data-aos="fade-up" data-aos-delay="300">
+                <div class="h-56 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&w=600&q=80" alt="Formatação" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent"></div>
+                    <div class="absolute bottom-6 left-0 right-0 flex justify-center">
+                        <div class="w-16 h-16 bg-blue-600 text-white rounded-2xl flex items-center justify-center transform rotate-3 group-hover:-rotate-6 transition-transform shadow-lg shadow-blue-600/30">
+                            <i class="fas fa-window-restore text-2xl"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-8 pt-6">
+                    <h3 class="text-2xl font-bold mb-3 text-gray-800">Formatação</h3>
+                    <p class="text-gray-600 leading-relaxed">Instalação de sistemas operacionais limpos, com backup 100% seguro e drivers atualizados.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Table -->
+    <section id="precos" class="bg-slate-900 py-24 px-4 text-white relative overflow-hidden">
+        <!-- Background Shape Abstrato -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-blue-600 rounded-full mix-blend-overlay filter blur-[100px] opacity-30"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-purple-600 rounded-full mix-blend-overlay filter blur-[100px] opacity-20"></div>
+        
+        <div class="max-w-4xl mx-auto relative z-10" data-aos="zoom-in" data-aos-duration="800">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Tabela de Serviços <span class="text-blue-400">(Médios)</span></h2>
+                <div class="w-24 h-1.5 bg-blue-500 mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="bg-slate-800/60 backdrop-blur-xl rounded-3xl shadow-2xl border border-slate-700 overflow-hidden">
+                <div class="p-6 bg-blue-600/30 border-b border-slate-700 flex justify-between items-center">
+                    <span class="font-bold uppercase tracking-wider text-sm text-blue-200"><i class="fas fa-list-ul mr-2"></i> Serviço</span>
+                    <span class="font-bold uppercase tracking-wider text-sm text-blue-200"><i class="fas fa-tag mr-2"></i> Valor</span>
+                </div>
+                <ul class="divide-y divide-slate-700/50 text-lg">
+                    <li class="p-5 px-6 flex justify-between items-center hover:bg-slate-700/50 transition duration-300 group">
+                        <span class="flex items-center"><i class="fas fa-check text-blue-500 mr-4 opacity-0 group-hover:opacity-100 transition-all transform -translate-x-2 group-hover:translate-x-0"></i> Formatação Simples</span>
+                        <span class="font-bold text-blue-400">R$ 50,00</span>
+                    </li>
+                    <li class="p-5 px-6 flex justify-between items-center hover:bg-slate-700/50 transition duration-300 group">
+                        <span class="flex items-center"><i class="fas fa-check text-blue-500 mr-4 opacity-0 group-hover:opacity-100 transition-all transform -translate-x-2 group-hover:translate-x-0"></i> Formatação + Backup (até 250GB)</span>
+                        <span class="font-bold text-blue-400">R$ 70,00</span>
+                    </li>
+                    <li class="p-5 px-6 flex justify-between items-center hover:bg-slate-700/50 transition duration-300 group">
+                        <span class="flex items-center"><i class="fas fa-check text-blue-500 mr-4 opacity-0 group-hover:opacity-100 transition-all transform -translate-x-2 group-hover:translate-x-0"></i> Formatação + Backup (até 500GB)</span>
+                        <span class="font-bold text-blue-400">R$ 85,00</span>
+                    </li>
+                    <li class="p-5 px-6 flex justify-between items-center hover:bg-slate-700/50 transition duration-300 group">
+                        <span class="flex items-center"><i class="fas fa-check text-blue-500 mr-4 opacity-0 group-hover:opacity-100 transition-all transform -translate-x-2 group-hover:translate-x-0"></i> Remoção de Vírus e Limpeza Lógica</span>
+                        <span class="font-bold text-blue-400">R$ 50,00</span>
+                    </li>
+                    <li class="p-5 px-6 flex justify-between items-center hover:bg-slate-700/50 transition duration-300 group">
+                        <span class="flex items-center"><i class="fas fa-check text-blue-500 mr-4 opacity-0 group-hover:opacity-100 transition-all transform -translate-x-2 group-hover:translate-x-0"></i> Instalação Pacote Office</span>
+                        <span class="font-bold text-blue-400">R$ 25,00</span>
+                    </li>
+                    <li class="p-5 px-6 flex justify-between items-center hover:bg-slate-700/50 transition duration-300 group">
+                        <span class="flex items-center"><i class="fas fa-check text-blue-500 mr-4 opacity-0 group-hover:opacity-100 transition-all transform -translate-x-2 group-hover:translate-x-0"></i> Troca de HD por SSD (Mão de obra)</span>
+                        <span class="font-bold text-blue-400">R$ 50,00</span>
+                    </li>
+                    <li class="p-5 px-6 flex justify-between items-center hover:bg-slate-700/50 transition duration-300 group">
+                        <span class="flex items-center"><i class="fas fa-check text-blue-500 mr-4 opacity-0 group-hover:opacity-100 transition-all transform -translate-x-2 group-hover:translate-x-0"></i> Troca de Teclado (Notebook)</span>
+                        <span class="font-bold text-blue-400">R$ 50,00</span>
+                    </li>
+                    <li class="p-5 px-6 flex justify-between items-center hover:bg-slate-700/50 transition duration-300 group">
+                        <span class="flex items-center"><i class="fas fa-check text-blue-500 mr-4 opacity-0 group-hover:opacity-100 transition-all transform -translate-x-2 group-hover:translate-x-0"></i> Manutenção Preventiva</span>
+                        <span class="font-bold text-blue-400">R$ 35,00</span>
+                    </li>
+                    <li class="p-6 px-6 flex justify-between items-center bg-blue-600/20 border-t border-blue-500/30 group">
+                        <span class="font-bold flex items-center text-xl text-white"><i class="fas fa-star text-yellow-400 mr-4"></i> Montagem de PC Gamer/Novo</span>
+                        <span class="font-bold text-blue-300 text-xl bg-blue-900/50 px-4 py-1 rounded-lg">R$ 120,00</span>
+                    </li>
+                </ul>
+            </div>
+            <p class="text-sm text-slate-400 mt-8 text-center italic"><i class="fas fa-info-circle mr-1"></i> Os valores podem variar dependendo da complexidade do serviço e das peças necessárias para o reparo.</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contato" class="py-24 max-w-6xl mx-auto px-4 overflow-hidden">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div data-aos="fade-right">
+                <div class="mb-4 inline-block px-4 py-1.5 bg-blue-100 text-blue-700 rounded-full text-sm font-bold tracking-wide">
+                    <i class="fas fa-bolt mr-2"></i> Atendimento Rápido
+                </div>
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900 leading-tight">Precisando de ajuda urgente?</h2>
+                <p class="text-gray-600 mb-10 text-lg leading-relaxed">
+                    Estamos localizados na Vila Nhocuné. Oferecemos suporte remoto para soluções rápidas ou atendimento presencial com <span class="font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded">retirada e entrega</span> de equipamentos na sua residência.
+                </p>
+                
+                <div class="space-y-8 bg-white p-8 rounded-[2rem] shadow-lg border border-gray-100">
+                    <!-- Link WhatsApp com mensagem -->
+                    <a href="https://wa.me/5511970670889?text=Olá,%20desejo%20um%20orçamento." target="_blank" class="flex items-center space-x-5 group">
+                        <div class="bg-green-100 p-4 rounded-2xl text-green-600 group-hover:bg-green-500 group-hover:text-white transition duration-300 shadow-sm">
+                            <i class="fab fa-whatsapp text-3xl"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500 font-medium mb-1">Fale agora no WhatsApp</p>
+                            <span class="text-2xl font-bold text-gray-900 group-hover:text-green-600 transition">(11) 97067-0889</span>
+                        </div>
+                    </a>
+                    <div class="w-full h-px bg-gray-100"></div>
+                    <div class="flex items-center space-x-5 group">
+                        <div class="bg-blue-100 p-4 rounded-2xl text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition duration-300 shadow-sm">
+                            <i class="fas fa-map-marker-alt text-3xl px-1"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500 font-medium mb-1">Nossa Localização</p>
+                            <span class="text-lg font-bold text-gray-900">Rua São Saturnino 192, Vila Nhocuné</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-8 md:p-10 rounded-[2.5rem] shadow-2xl border border-gray-100 relative" data-aos="fade-left">
+                <h3 class="text-3xl font-bold mb-8 text-gray-800">Envie uma Mensagem</h3>
+                <form id="contactForm" class="space-y-6">
+                    <div class="relative">
+                        <label class="block text-sm font-bold mb-2 text-gray-700">Nome Completo</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                <i class="fas fa-user text-gray-400"></i>
+                            </div>
+                            <input type="text" required class="w-full pl-12 p-4 bg-gray-50 rounded-2xl border-2 border-transparent focus:border-blue-500 focus:bg-white outline-none transition-all duration-300 font-medium" placeholder="Como devemos chamá-lo?">
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <label class="block text-sm font-bold mb-2 text-gray-700">E-mail ou WhatsApp</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                <i class="fas fa-address-book text-gray-400"></i>
+                            </div>
+                            <input type="text" required class="w-full pl-12 p-4 bg-gray-50 rounded-2xl border-2 border-transparent focus:border-blue-500 focus:bg-white outline-none transition-all duration-300 font-medium" placeholder="Seu melhor contato">
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <label class="block text-sm font-bold mb-2 text-gray-700">Como podemos ajudar?</label>
+                        <textarea rows="4" required class="w-full p-4 bg-gray-50 rounded-2xl border-2 border-transparent focus:border-blue-500 focus:bg-white outline-none transition-all duration-300 resize-none font-medium" placeholder="Descreva brevemente o problema do seu equipamento..."></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg py-5 rounded-2xl transition-all duration-300 shadow-lg shadow-blue-500/30 transform hover:-translate-y-1 flex items-center justify-center group overflow-hidden relative">
+                        <span class="relative z-10 flex items-center">
+                            Enviar Mensagem
+                            <i class="fas fa-paper-plane ml-3 group-hover:translate-x-2 transition-transform"></i>
+                        </span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-950 text-gray-400 py-16 px-4 border-t border-gray-900">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="text-center md:text-left">
+                <div class="flex items-center justify-center md:justify-start space-x-3 mb-4">
+                    <div class="w-10 h-10 bg-blue-600/20 rounded-xl flex items-center justify-center">
+                        <i class="fas fa-microchip text-blue-500 text-xl"></i>
+                    </div>
+                    <span class="text-3xl font-bold text-white tracking-tight">RM4<span class="text-blue-600">TECH</span></span>
+                </div>
+                <p class="max-w-sm mt-2">Assistência técnica especializada em TI, garantindo o melhor desempenho e vida útil para sua máquina.</p>
+            </div>
+            <div class="text-center md:text-right">
+                <p class="text-sm font-medium mb-5">Desenvolvido por <span class="text-white font-bold">Paulo Alexandre</span></p>
+                <div class="flex justify-center md:justify-end space-x-4">
+                    <a href="#" class="w-12 h-12 rounded-full bg-gray-900 border border-gray-800 flex items-center justify-center hover:bg-blue-600 hover:border-blue-600 hover:text-white transition-all duration-300 transform hover:-translate-y-1"><i class="fab fa-facebook-f"></i></a>
+                    <!-- Ícone do Instagram atualizado -->
+                    <a href="https://www.instagram.com/rm4tech_/" target="_blank" class="w-12 h-12 rounded-full bg-gray-900 border border-gray-800 flex items-center justify-center hover:bg-pink-600 hover:border-pink-600 hover:text-white transition-all duration-300 transform hover:-translate-y-1"><i class="fab fa-instagram text-xl"></i></a>
+                    <!-- Ícone do WhatsApp atualizado no rodapé -->
+                    <a href="https://wa.me/5511970670889?text=Olá,%20desejo%20um%20orçamento." target="_blank" class="w-12 h-12 rounded-full bg-gray-900 border border-gray-800 flex items-center justify-center hover:bg-green-500 hover:border-green-500 hover:text-white transition-all duration-300 transform hover:-translate-y-1"><i class="fab fa-whatsapp text-xl"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-6xl mx-auto mt-12 pt-8 border-t border-gray-900 text-center text-sm">
+            <p>&copy; 2023 RM4TECH. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Inicializar Animações de Scroll
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 50,
+        });
+
+        // Simulação de Envio do Formulário de E-mail
+        document.getElementById('contactForm').onsubmit = (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            const originalContent = btn.innerHTML;
+            
+            // Estado de carregamento
+            btn.innerHTML = '<span class="relative z-10 flex items-center"><i class="fas fa-circle-notch fa-spin text-xl"></i> <span class="ml-3">Enviando...</span></span>';
+            btn.classList.add('opacity-90', 'cursor-not-allowed');
+            
+            // Simula delay de rede
+            setTimeout(() => {
+                // Estado de Sucesso
+                btn.innerHTML = '<span class="relative z-10 flex items-center"><i class="fas fa-check-circle text-xl"></i> <span class="ml-3">Mensagem Enviada!</span></span>';
+                btn.classList.remove('bg-blue-600', 'hover:bg-blue-700', 'opacity-90', 'cursor-not-allowed', 'shadow-blue-500/30');
+                btn.classList.add('bg-green-500', 'hover:bg-green-600', 'shadow-green-500/30');
+                
+                // Reseta após 3 segundos
+                setTimeout(() => {
+                    btn.innerHTML = originalContent;
+                    btn.classList.remove('bg-green-500', 'hover:bg-green-600', 'shadow-green-500/30');
+                    btn.classList.add('bg-blue-600', 'hover:bg-blue-700', 'shadow-blue-500/30');
+                    e.target.reset();
+                }, 3000);
+            }, 1500);
+        };
+    </script>
+</body>
+</html>
